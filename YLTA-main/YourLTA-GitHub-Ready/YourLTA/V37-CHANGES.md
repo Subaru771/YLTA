@@ -1,1 +1,0 @@
-YourLTA v37: refined global accent palette, responsive spacing and card studio; JSON manual upload only under PC exporter; successful reviewed JSON imports collapse import and navigate to Stats. Existing backend unchanged. Browser smoke-test recommended.
