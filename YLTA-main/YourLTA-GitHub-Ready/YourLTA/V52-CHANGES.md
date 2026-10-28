@@ -1,0 +1,1 @@
+Phone import completion now reopens the import section, selects PSN web import, displays a compact review, dismisses the keyboard, and focuses and scrolls to Apply trophies after layout. Script URLs updated to refresh cached JavaScript.

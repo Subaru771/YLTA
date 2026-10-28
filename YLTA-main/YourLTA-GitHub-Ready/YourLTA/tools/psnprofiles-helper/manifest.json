@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "YLTA PSNProfiles Tab Collector",
+  "version": "1.0.0",
+  "description": "Collect PSNProfiles rarity from trophy pages you already have open, locally and on demand. No automated fetching.",
+  "permissions": [
+    "tabs",
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://psnprofiles.com/*",
+    "https://www.psnprofiles.com/*"
+  ],
+  "action": {
+    "default_title": "YLTA Tab Collector",
+    "default_popup": "popup.html"
+  },
+  "icons": {
+    "48": "icon.png",
+    "128": "icon.png"
+  }
+}

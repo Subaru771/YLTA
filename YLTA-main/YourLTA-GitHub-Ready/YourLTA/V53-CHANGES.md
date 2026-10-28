@@ -1,0 +1,1 @@
+Added Delete all trophies to the phone/web import section. Both delete buttons share the existing four-second confirmation and reset together. Deletion clears the pending mobile review and updates its status. Goals are retained.
