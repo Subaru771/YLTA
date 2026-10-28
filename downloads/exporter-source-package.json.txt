@@ -1,0 +1,9 @@
+{
+  "name": "yourlta-alternative-exporter",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "psn-api": "^2.16.3"
+  }
+}

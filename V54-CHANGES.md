@@ -1,0 +1,1 @@
+Public beta launch: homepage introduction, feature overview video, social previews, trust FAQ, downloadable version source and local feedback report builder. Corrected contradictory NPSSO disclosure in privacy policy. Retains v52 phone Apply fix and v53 phone deletion. No analytics or feedback backend added.

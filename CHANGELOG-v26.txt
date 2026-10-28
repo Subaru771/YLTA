@@ -1,0 +1,1 @@
+YourLTA v26: Vibrant Aurora UI polish and colorful 3-step manual JSON import walkthrough. No changes to PSN exporter, transfer behavior, or trophy data logic. PSNProfiles remains optional.
