@@ -1,0 +1,11 @@
+YourLTA v12 — Guided Import + Safer Refreshes
+- Guided PSN setup and clear links to local sync / PSNProfiles collector.
+- Automatic file analysis and review before importing (added, changed, unchanged, invalid/ambiguous).
+- Repeated exports merge without duplication; trophy ID matching takes precedence.
+- Earned dates, stars, notes, PSNProfiles rarity retained when absent from new files.
+- Old demo data removed on first real trophy import.
+- Recent imports saved locally with filename, date and summary; no token/content logged.
+- Import history included in full JSON backup; older backup formats still supported.
+- Invalid JSON / CSV shows practical errors. File limit 25 MB.
+- Two-step confirmation on destructive replace and wipe.
+- Security CSP script hashes rebuilt.
