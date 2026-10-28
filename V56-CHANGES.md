@@ -1,1 +1,0 @@
-Combined welcome sections into one panel with live completion, adaptive import CTA and goals shortcut. Removed duplicate dashboard welcome fold. Refined type, spacing, mobile buttons, progress accessibility and resource layout. Kept supplied reel, trust disclosures, source, feedback and all existing app features.
