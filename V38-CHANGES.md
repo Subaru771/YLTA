@@ -1,1 +1,0 @@
-YourLTA v38: Removed Ctrl+K hint from search button; added collapsible keyboard shortcuts at bottom of desktop sidebar; replaced fixed blue/purple/teal decorative styling with accent-derived app-wide palette for sidebar, background, action buttons, tiles, import, share, and goals. Existing import and backend retained.
