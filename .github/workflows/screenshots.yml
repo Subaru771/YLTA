@@ -1,0 +1,50 @@
+name: Capture real YLTA screenshots
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ylta-screenshots-main
+  cancel-in-progress: false
+
+jobs:
+  capture:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install screenshot-only browser tooling
+        run: |
+          npm install --no-save --no-package-lock playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Serve the actual static app
+        run: |
+          python3 -m http.server 8000 --bind 127.0.0.1 > /tmp/ylta-http.log 2>&1 &
+          for i in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:8000/ > /dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/ylta-http.log
+          exit 1
+      - name: Capture desktop, analytics and mobile
+        run: node scripts/capture-screenshots.cjs
+      - name: Commit the real screenshots
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/screenshots/dashboard-desktop.png assets/screenshots/analytics-desktop.png assets/screenshots/dashboard-mobile.png
+          if git diff --cached --quiet; then
+            echo "Screenshots unchanged"
+          else
+            git commit -m "docs: add real YLTA desktop and mobile screenshots"
+            git push origin HEAD:main
+          fi
