@@ -1,5 +1,5 @@
 <!doctype html><html lang="en"><head><meta charset=utf8><title>YourLTA — PlayStation Trophy Stats, Goals & Cards</title><meta name="description" content="Turn your PlayStation trophies into personal stats, goals and shareable hunter cards. Use YourLTA v1.0 on phone or PC."><link rel="canonical" href="https://yourlta.pages.dev/"><meta name="theme-color" content="#071a2e"><meta name="robots" content="index,follow"><meta property="og:type" content="website"><meta property="og:site_name" content="YLTA"><meta property="og:title" content="YLTA — Your Local Trophy Analyzer"><meta property="og:description" content="Your trophies. Your next challenge. Explore PlayStation trophy stats, set goals and create your own hunter card. Version 1.0."><meta property="og:url" content="https://yourlta.pages.dev/"><meta property="og:image" content="https://yourlta.pages.dev/assets/promo/yourlta-social.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="YourLTA: Your trophies. Your next challenge. PlayStation trophy stats, goals and hunter cards."><meta name="twitter:card" content="summary_large_image"><link rel="icon" type="image/png" href="/favicon.png"><link rel="apple-touch-icon" href="/favicon.png"><link rel="manifest" href="/manifest.webmanifest"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}
-/* v15: readable stats, polished trophy rows, guide metadata */
+/* UI styling */
 #view-stats .tiles,.dash-kpis{grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr))!important;align-items:stretch}
 #view-stats .tile,.dash-kpis .tile{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:8px;min-width:0;min-height:108px;text-align:left;overflow-wrap:anywhere}
 #view-stats .tile b,.dash-kpis .tile b{display:block;font-size:clamp(1.35rem,2.8vw,2.2rem)!important;line-height:1.15;letter-spacing:-.035em;margin:0!important;max-width:100%;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
@@ -52,7 +52,7 @@
 /* v33 mobile viewport stability */
 @media(max-width:760px){html,body{width:100%;max-width:100%;overflow-x:hidden}main,section,.card,.panel{min-width:0}input,textarea,select{max-width:100%;box-sizing:border-box}#yltaMobileApi,#yltaMobileToken{width:100%;min-width:0}}
 
-/* v41: comfortable light theme and simplified hunter card studio */
+/* UI styling */
 :root[data-theme="light"]{
  --bg:#cbd4df;--surface:#dbe3eb;--surface-2:#c4d0dc;
  --line:#9faebe;--fg:#192838!important;--muted:#46586b!important;
@@ -75,7 +75,7 @@
 .share-studio .studio-preview{position:sticky;top:20px;align-self:start}
 @media(max-width:900px){.share-studio .studio-preview{position:static}}
 
-/* v42: lower-glare light theme, better readability and card preview */
+/* UI styling */
 :root[data-theme="light"] .studio-section,
 :root[data-theme="light"] .panel,
 :root[data-theme="light"] .card{
@@ -96,7 +96,7 @@
 :root[data-theme="light"] input::placeholder{color:#536578!important}
 :root[data-theme="light"] .share-studio .studio-preview{background:#bfcbd7!important}
 
-/* v43: high-contrast light mode. Applied after all earlier theme rules. */
+/* UI styling */
 :root[data-theme="light"]{
  --bg:#cbd4df;--surface:#e3eaf1;--surface-2:#d2dde7;
  --line:#9caebe;--fg:#152638!important;--muted:#43576b!important;
@@ -147,7 +147,7 @@
 :root[data-theme="light"] .ylta-topbar h2,
 :root[data-theme="light"] .dash-heading{color:#17293b!important}
 
-/* v44: true app-wide tinting, preserving contrast and trophy tier identity */
+/* UI styling */
 :root{--theme-sidebar:var(--surface-2);--theme-hero:var(--surface-2);--theme-input:var(--surface-2);--theme-chip:var(--surface-2)}
 
 :root[data-theme="light"] body,:root[data-theme="dark"] body{background:var(--bg)!important}
@@ -185,7 +185,7 @@
 .share-studio #shareDownload{border-radius:12px;min-height:48px}
 @media(max-width:950px){.share-studio .studio-grid{grid-template-columns:1fr}.share-studio .studio-controls{max-height:none;overflow:visible;display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.share-studio .studio-preview{position:static;grid-row:1}}
 @media(max-width:600px){.share-studio .studio-controls{grid-template-columns:1fr}.share-studio .preview-canvas-wrap{padding:9px!important}}
-</style><style id="ylta-v36-method-style">.ylta-method-picker{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:12px;margin:18px 0}.ylta-method-choice{display:flex;flex-direction:column;text-align:left;gap:8px;border:1px solid #64748b;border-radius:14px;padding:16px;background:#12253a;color:#f8fafc;cursor:pointer;min-height:150px;font:inherit}.ylta-method-choice strong{font-size:16px}.ylta-method-choice span{color:#cbd5e1}.ylta-method-choice em{font-style:normal;font-size:12px;line-height:1.5;font-weight:700}.ylta-method-choice[aria-expanded="true"]{border:2px solid #60a5fa;box-shadow:0 0 0 2px #60a5fa30}.ylta-risk-high{color:#fca5a5}.ylta-risk-lower{color:#86efac}#yltaWebMethod,#yltaPCMethod{margin-top:12px}#yltaWebMethod[hidden],#yltaPCMethod[hidden]{display:none!important}</style><style id="ylta-v37-polish">
+</style><style id="ylta-method-style">.ylta-method-picker{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:12px;margin:18px 0}.ylta-method-choice{display:flex;flex-direction:column;text-align:left;gap:8px;border:1px solid #64748b;border-radius:14px;padding:16px;background:#12253a;color:#f8fafc;cursor:pointer;min-height:150px;font:inherit}.ylta-method-choice strong{font-size:16px}.ylta-method-choice span{color:#cbd5e1}.ylta-method-choice em{font-style:normal;font-size:12px;line-height:1.5;font-weight:700}.ylta-method-choice[aria-expanded="true"]{border:2px solid #60a5fa;box-shadow:0 0 0 2px #60a5fa30}.ylta-risk-high{color:#fca5a5}.ylta-risk-lower{color:#86efac}#yltaWebMethod,#yltaPCMethod{margin-top:12px}#yltaWebMethod[hidden],#yltaPCMethod[hidden]{display:none!important}</style><style id="ylta-polish">
 :root{--ylta-glow:77,163,255}body{background-image:radial-gradient(ellipse 85% 48% at 88% -14%,rgba(var(--ylta-glow),.13),transparent 75%)!important;background-attachment:fixed}
 button,.btn,input,select,textarea{transition:border-color .18s,background-color .18s,box-shadow .18s,transform .18s}button:focus-visible,.btn:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:3px}button:hover:not(:disabled),.btn:hover:not(:disabled){filter:brightness(1.07)}.panel,.card,.share-studio,.ylta-simple-import{box-shadow:0 14px 42px rgba(0,0,0,.075);border-color:var(--line)!important}.card{border-radius:18px}.bar{gap:12px}.bar .actions{gap:8px;flex-wrap:wrap}.ylta-import-walkthrough,.ylta-trust-panel{max-width:100%}.ylta-method-choice{background:var(--surface-2)!important;color:var(--fg)!important;border-color:var(--line)!important;min-height:130px}.ylta-method-choice span{color:var(--muted)!important}.ylta-method-choice[aria-expanded=true]{border-color:var(--accent)!important;box-shadow:0 0 0 3px rgba(var(--ylta-glow),.16)}#yltaImportData[hidden],#yltaImportData[hidden] *,#yltaPCMethod[hidden] *,#yltaWebMethod[hidden] *{display:none!important}.share-studio{overflow:hidden;position:relative}.share-studio:before{content:'';position:absolute;right:-120px;top:-180px;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,rgba(var(--ylta-glow),.18),transparent 70%);pointer-events:none}.studio-heading h2{font-size:clamp(24px,3vw,38px);letter-spacing:-.035em}.studio-section{border-radius:16px}.studio-preview{position:relative}.preview-canvas-wrap{border:1px solid var(--line);border-radius:18px;padding:12px;background:radial-gradient(circle at 50% 10%,rgba(var(--ylta-glow),.14),transparent 70%),var(--surface-2)}#shareCanvas{max-width:100%;height:auto;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,.24)}#shareDownload{font-weight:800;letter-spacing:.015em}.ylta-import-route[hidden],#yltaImportData[hidden]{display:none!important}details:not([open])> :not(summary){display:none} .hint{line-height:1.55}
 @media(max-width:700px){.bar{flex-direction:column;align-items:stretch}.bar .actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.bar .actions .btn{min-width:0;padding:10px 8px}.studio-grid{grid-template-columns:minmax(0,1fr)!important}.ylta-method-picker{grid-template-columns:minmax(0,1fr)}.panel{padding:14px}.share-studio{padding:15px}}
@@ -546,7 +546,7 @@ input[type=text],input[type=search],input[type=number],input[type=datetime-local
 .psnp-legacy-content{padding:12px 15px 16px;display:grid;gap:12px}
 .psnp-import .btn:disabled{opacity:.4;cursor:not-allowed;filter:saturate(.45);transform:none}
 
-/* v12 — guided trophy importer */
+/* UI styling */
 .import-wizard{display:grid;gap:13px;padding:17px;border:1px solid #286087;background:linear-gradient(125deg,#102c4b,#0b182e);border-radius:15px;margin-bottom:16px}
 .import-wizard h3{font:750 22px var(--f-display);margin:0}.import-wizard p{margin:0;color:#b8d4ee;line-height:1.6}
 .import-wizard-label{color:#61d5fb;font-size:10px;font-weight:800;letter-spacing:.16em}
@@ -967,7 +967,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent);outline:2px s
  .btn,.tab,.chip,.card,.row{transition:none!important;transform:none!important}
 }
 
-/* v16: reliable distribution alignment; grid sizing independent of long values */
+/* UI styling */
 .stats-board>.stats-card .brow,.stats-board .brow{display:grid!important;grid-template-columns:minmax(82px,105px) minmax(45px,1fr) max-content!important;gap:12px!important;align-items:center!important;min-width:0!important;margin:11px 0!important}
 .stats-board .brow .l{min-width:0;line-height:1.3;overflow-wrap:normal}
 .stats-board .brow .track{min-width:0;width:100%}
@@ -995,7 +995,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent);outline:2px s
 .gcard .ylta-v15-resource{gap:6px}
 .gcard .ylta-v15-resource .btn{font-size:11px}
 
-/* v26 — aurora trophy studio: decorative layers and a clear colorful import journey */
+/* UI styling */
 :root{--ui-radius:19px;--panel-shadow:0 12px 34px #020d2333;--accent:#38c9ff;--accent-soft:#133b61;--ylta-purple:#9a7bff;--ylta-mint:#49e0c2;--ylta-pink:#ff8ec2}
 :root[data-theme="light"]{--accent:#087ac9;--accent-soft:#e3f2ff;--panel-shadow:0 10px 30px #154b8514}
 body{background-color:var(--bg);background-image:radial-gradient(ellipse 60% 36% at 12% 3%,#1767b333,transparent 72%),radial-gradient(ellipse 48% 36% at 93% 11%,#7441cc23,transparent 74%),radial-gradient(ellipse 44% 32% at 54% 85%,#00b99b12,transparent 75%);background-attachment:fixed}
@@ -1026,7 +1026,7 @@ body{background-color:var(--bg);background-image:radial-gradient(ellipse 60% 36%
 @media(max-width:740px){.ylta-walkthrough-steps{grid-template-columns:1fr}.ylta-walkthrough-step{padding:13px 14px}.ylta-walkthrough-time{display:none}.ylta-import-walkthrough{padding:13px}}
 @media(prefers-reduced-motion:reduce){.panel,.card,.tile,.gcard,.row,.filters,.dash-fold{transition:none}}
 
-/* v38: truly app-wide user-selected accent palette. Keep trophy medal identity unchanged. */
+/* UI styling */
 :root{--ylta-rgb:102,214,255;--ylta-tint:var(--accent);--ylta-wash:color-mix(in srgb,var(--accent) 13%,var(--surface));}
 body{background-color:var(--bg)!important;background-image:radial-gradient(ellipse 70% 46% at 10% 0%,rgba(var(--ylta-rgb),.19),transparent 72%),radial-gradient(ellipse 58% 50% at 95% 85%,rgba(var(--ylta-rgb),.10),transparent 76%)!important}
 .ylta-sidebar{background:linear-gradient(165deg,color-mix(in srgb,var(--accent) 18%,var(--bg)),var(--bg) 80%)!important;border-right-color:var(--line)!important;color:var(--fg)!important}
@@ -1100,11 +1100,11 @@ body{background-color:var(--bg)!important;background-image:radial-gradient(ellip
     </div>
   </div>
 
-<style id="ylta-v56-refinement">
+<style id="ylta-refinement">
 #launchIntro{padding:0;overflow:hidden;border-radius:20px;box-shadow:none;background:radial-gradient(ellipse at 95% 0%,color-mix(in srgb,var(--accent) 12%,transparent),transparent 65%),var(--surface);margin:0 0 24px}
 #launchIntro .launch-main{display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,.46fr);gap:32px;align-items:center;padding:clamp(22px,3.6vw,42px)}
 #launchIntro h2{font-family:var(--f-body);font-size:clamp(32px,4.3vw,54px);font-weight:800;line-height:1.07;letter-spacing:-.045em;margin:20px 0 16px;color:var(--fg);text-transform:none}
-#launchIntro .launch-copy>p{font-size:14px;max-width:53ch;color:var(--muted);margin:0 0 22px}#launchIntro .launch-badge{display:flex;align-items:center;gap:12px;font-size:11px;letter-spacing:.12em}.launch-beta{border:1px solid var(--line);border-radius:99px;font-size:9px;letter-spacing:.08em;color:var(--muted);padding:5px 8px}
+#launchIntro .launch-copy>p{font-size:14px;max-width:53ch;color:var(--muted);margin:0 0 22px}#launchIntro .launch-badge{display:flex;align-items:center;gap:12px;font-size:11px;letter-spacing:.12em}.launch-version{border:1px solid var(--line);border-radius:99px;font-size:9px;letter-spacing:.08em;color:var(--muted);padding:5px 8px}
 #launchIntro .launch-score{padding:24px;border:1px solid var(--line);border-radius:16px;background:var(--surface-2);min-width:0}#launchIntro .launch-score>span{font-size:11px;font-weight:650;letter-spacing:.04em;color:var(--muted)}#launchIntro .launch-score strong{display:block;font-size:clamp(44px,6vw,70px);font-weight:750;letter-spacing:-.055em;line-height:1.2;margin:14px 0;color:var(--fg);font-variant-numeric:tabular-nums}#launchIntro .launch-score p{font-size:12px;line-height:1.6;color:var(--muted);margin:12px 0 0}
 .launch-progress{height:6px;background:var(--line);overflow:hidden;border-radius:99px}.launch-progress i{display:block;height:100%;background:var(--accent);border-radius:inherit;transition:width .25s ease}
 #launchIntro .launch-trust{max-width:none;margin:0;padding:15px clamp(22px,3.6vw,42px);border-top:1px solid var(--line);font-size:12px;line-height:1.65;background:var(--surface-2)}#launchIntro .launch-resources{padding:0 clamp(22px,3.6vw,42px) 16px}#launchIntro details{margin:0;border-bottom:1px solid var(--line);font-size:13px}#launchIntro summary{padding:15px 0;font-size:12px;font-weight:600;color:var(--fg)}#launchIntro details p{max-width:80ch;color:var(--muted)}#launchIntro video{max-height:500px;width:auto;max-width:100%;object-fit:contain}
@@ -1113,7 +1113,7 @@ body{background-color:var(--bg)!important;background-image:radial-gradient(ellip
 @media(prefers-reduced-motion:reduce){.launch-progress i{transition:none}}
 </style>
 <section class="launch-intro" id="launchIntro" aria-labelledby="launchHeading">
- <div class="launch-main"><div class="launch-copy"><span class="launch-badge">YOURLTA <span class="launch-beta">v1.0</span></span>
+ <div class="launch-main"><div class="launch-copy"><span class="launch-badge">YOURLTA <span class="launch-version">v1.0</span></span>
  <h2 id="launchHeading">Your trophies.<br><span>Your next challenge.</span></h2>
  <p id="launchDescription">Turn your PlayStation trophies into personal stats, goals and shareable hunter cards. Get started on your phone or PC.</p>
  
@@ -1125,7 +1125,7 @@ body{background-color:var(--bg)!important;background-image:radial-gradient(ellip
  <p><strong>On phone:</strong> Web import transmits your NPSSO credential over HTTPS to the YourLTA-operated server on Render, which requests trophies from PSN. This is unofficial account access; NPSSO is a sensitive credential. The supplied server code does not intentionally save tokens or log request bodies. This is not a guarantee about hosting infrastructure or the deployed service.</p>
  <p><strong>On Windows PC:</strong> Download and run the local exporter, then import its JSON file. This avoids sending NPSSO to YourLTA's import server; the exporter still communicates with Sony using unofficial access.</p>
  <p><strong>After import:</strong> Review and apply your trophies. Collection data and goals are saved in this browser, with no automatic cloud sync. Export a JSON backup before clearing site data or moving devices.</p>
- <p><a href="privacy.html">Privacy policy</a> · <a href="downloads/yourlta-source-v56.zip" download>Download this version’s source</a> · <a href="mobile-server/mobile-api.mjs">Read import-server source</a></p>
+ <p><a href="privacy.html">Privacy policy</a> · <a href="https://github.com/Subaru771/YLTA/archive/refs/heads/main.zip" download>Download this version’s source</a> · <a href="mobile-server/mobile-api.mjs">Read import-server source</a></p>
  </details><div class="launch-footer"><a href="feedback.html">Give feedback</a><a href="privacy.html">Privacy policy</a><span>Made for trophy hunters.</span></div></div>
 </section>
 
@@ -1176,7 +1176,7 @@ body{background-color:var(--bg)!important;background-image:radial-gradient(ellip
           <button class="ylta-method-choice" id="yltaMethodPC" type="button" aria-expanded="false" aria-controls="yltaPCMethod"><strong>💻 PC exporter — local method</strong><span>Windows PC required · More steps · Not directly usable on phones</span><em class="ylta-risk-lower">LOWER TOKEN-EXPOSURE RISK — the exporter runs locally; still uses unofficial PSN access.</em></button>
         </div>
         <div id="yltaWebMethod" hidden>    <section class="ylta-mobile-sync" style="padding:18px;border:1px solid #5088b4;border-radius:14px;margin:16px 0">
-      <h3>Web import · Phone or PC (beta)</h3>
+      <h3>Web import · Phone or PC</h3>
       <p class="hint">No computer needed. Sign in on <a href="https://www.playstation.com/" target="_blank" rel="noopener noreferrer">PlayStation</a>, then <a href="https://ca.account.sony.com/api/v1/ssocookie" target="_blank" rel="noopener noreferrer">open Sony's NPSSO page</a> in the same browser. Copy only the NPSSO value. Never share it with anyone. It will be transmitted to the YourLTA-operated Render import server to fetch trophies. This unofficial integration is not affiliated with Sony and carries account and privacy risks. Never share your token.</p>
       <p class="hint">Secure import service: <strong>yourlta-mobile-api.onrender.com</strong> (automatically configured).</p>
       <label for="yltaMobileToken">NPSSO token</label><input id="yltaMobileToken" type="password" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Paste NPSSO token" style="width:100%;padding:12px;margin:6px 0 12px">
