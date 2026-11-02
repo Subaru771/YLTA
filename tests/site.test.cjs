@@ -47,7 +47,7 @@ test('manifest and companion metadata are parseable JSON', () => {
 
 test('version and privacy language agrees with the public release', () => {
   assert.match(html, /YOURLTA\s*<span class="launch-version">v1\.0<\/span>/);
-  assert.match(file('README.md'), /Launch YourLTA v1\.0/);
+  assert.match(file('README.md'), /(?:Open|Launch) YourLTA v1\.0/);
   assert.match(file('SECURITY.md'), /not been independently security audited/);
   assert.doesNotMatch(html, /yourlta-source-v56\.zip/);
   assert.doesNotMatch(html, /js\/ylta-\d\.js\?v=56/);
