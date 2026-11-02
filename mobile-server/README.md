@@ -1,4 +1,4 @@
-# YourLTA phone/web import server — beta
+# YourLTA phone/web import server — v1.0
 
 This Node.js service is separate from the Cloudflare Pages frontend. The supplied frontend uses `https://yourlta-mobile-api.onrender.com`; there is no editable API-address field in that version's UI.
 

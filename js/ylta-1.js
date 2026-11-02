@@ -254,8 +254,8 @@ function renderList(){
   var earned=f.filter(function(x){return x.earned}).length;
   $("#sumline").innerHTML="<span>Showing <b>"+fmtNum(f.length)+"</b> of "+fmtNum(S.items.length)+" trophies</span><span><b>"+fmtNum(earned)+"</b> earned</span><span><b>"+fmtNum(pointsOf(f))+"</b> points earned</span>"+(f.length?'<button class="btn sm" type="button" data-act="copylist">Copy this list as CSV</button>':"");
   var el=$("#list");
-  var existingGuide=$("#ylta-v15-detail");if(existingGuide)existingGuide.remove();
-  if(S.game){var guidePanel=document.createElement("div");guidePanel.id="ylta-v15-detail";guidePanel.className="card";guidePanel.style.margin="12px 0";guidePanel.innerHTML="<h3>"+esc(S.game)+" — Trophy guide</h3>"+yltaGuideLinks(S.game);$("#sumline").insertAdjacentElement("afterend",guidePanel)}
+  var existingGuide=$("#ylta-guide-detail");if(existingGuide)existingGuide.remove();
+  if(S.game){var guidePanel=document.createElement("div");guidePanel.id="ylta-guide-detail";guidePanel.className="card";guidePanel.style.margin="12px 0";guidePanel.innerHTML="<h3>"+esc(S.game)+" — Trophy guide</h3>"+yltaGuideLinks(S.game);$("#sumline").insertAdjacentElement("afterend",guidePanel)}
   if(!S.items.length){
     el.innerHTML='<div class="empty"><h3>No trophies yet</h3><p>Import your PSN trophy collection using Import / export to start analyzing your achievements.</p><div class="actions" style="justify-content:center"><button class="btn primary" data-act="io" type="button">Sync or import</button></div></div>';
     return;
@@ -338,7 +338,7 @@ function dayStr(k){var p=k.split("-");return new Date(+p[0],+p[1]-1,+p[2]).toLoc
 /* ---------- stats ---------- */
 function barRow(label,iconHtml,colorVar,earned,total){
   var w=total?Math.round(earned/total*100):0;
-  return'<div class="brow"><div class="l">'+iconHtml+"<span>"+esc(label)+'</span></div><div class="track" style="color:var('+colorVar+')"><i style="width:'+w+'%"></i></div><div class="n"><span class="v16-ratio">'+fmtNum(earned)+" / "+fmtNum(total)+"</span></div></div>";
+  return'<div class="brow"><div class="l">'+iconHtml+"<span>"+esc(label)+'</span></div><div class="track" style="color:var('+colorVar+')"><i style="width:'+w+'%"></i></div><div class="n"><span class="trophy-completion-ratio">'+fmtNum(earned)+" / "+fmtNum(total)+"</span></div></div>";
 }
 function miniRow(x,sub){
   return'<div class="mrow">'+cup(x.type,!!x.earned)+"<p>"+esc(dispName(x))+'<br><span class="s">'+esc(x.game)+(sub?" · "+esc(sub):"")+'</span></p><span class="tier t-'+tierOf(x.rarity).key+'">'+fmtPct(x.rarity)+"</span></div>";
@@ -477,17 +477,17 @@ function renderStats(){
 }
 
 
-/* v15 guide metadata: browser-local verified entries, no speculative scraping */
-var YLTA_V15_KEY="ylta.guideMetadata.v15";
-function yltaGuideRead(){try{return JSON.parse(localStorage.getItem(YLTA_V15_KEY)||"{}")||{}}catch(e){return {}}}
-function yltaGuideSave(data){try{localStorage.setItem(YLTA_V15_KEY,JSON.stringify(data));return true}catch(e){alert("Unable to save guide metadata.");return false}}
+/* guide metadata: browser-local verified entries, no speculative scraping */
+var YLTA_GUIDE_KEY="ylta.guideMetadata.v15";
+function yltaGuideRead(){try{return JSON.parse(localStorage.getItem(YLTA_GUIDE_KEY)||"{}")||{}}catch(e){return {}}}
+function yltaGuideSave(data){try{localStorage.setItem(YLTA_GUIDE_KEY,JSON.stringify(data));return true}catch(e){alert("Unable to save guide metadata.");return false}}
 function yltaGuideSearch(name,kind){
  var q=(kind==="psn"?"site:psnprofiles.com/trophies/ ":kind==="psnguide"?"site:psnprofiles.com/guide/ ":kind==="powerpyx"?"site:powerpyx.com ":"site:playstationtrophies.org ")+name+(kind==="psn"?"":" trophy guide");
  return "https://www.google.com/search?q="+encodeURIComponent(q);
 }
 function yltaGuideLinks(name){
  var d=yltaGuideRead()[name]||{},types=[["psn","PSNProfiles"],["psnguide","PSNP guide"],["powerpyx","PowerPyx"],["pst","PS Trophies"]];
- return '<div class="ylta-v15-resource">'+types.map(function(t){return '<a class="btn sm" href="'+esc(d[t[0]]||yltaGuideSearch(name,t[0]))+'" target="_blank" rel="noopener noreferrer">'+esc(t[1])+(d[t[0]]?" ✓":" ↗")+'</a>'}).join("")+'<button type="button" class="btn sm" data-act="v15edit" data-game="'+esc(name)+'">Edit guide data</button></div>';
+ return '<div class="ylta-guide-resources">'+types.map(function(t){return '<a class="btn sm" href="'+esc(d[t[0]]||yltaGuideSearch(name,t[0]))+'" target="_blank" rel="noopener noreferrer">'+esc(t[1])+(d[t[0]]?" ✓":" ↗")+'</a>'}).join("")+'<button type="button" class="btn sm" data-act="edit-guide-data" data-game="'+esc(name)+'">Edit guide data</button></div>';
 }
 
 function yltaGuideEdit(name){
@@ -802,7 +802,7 @@ var pending="",replArmed=false,replTimer=null,wipeArmed=false,wipeTimer=null;
 var ioFileName="Pasted data",ioReview=null;
 var IMPORT_LOG_KEY="ylta.importHistory.v1";
 
-/* v16: status only from completed imports, never from opening or refreshing the page */
+/* status only from completed imports, never from opening or refreshing the page */
 function yltaRefreshImportStatus(){
  var relative=document.getElementById("yltaLastImportRelative"),exact=document.getElementById("yltaLastImportExact"),backup=document.getElementById("yltaBackupHint");
  if(!relative||!exact)return;
@@ -1060,7 +1060,7 @@ document.addEventListener("click",function(e){
   }
   var b=e.target.closest("[data-act]");if(!b)return;
   var act=b.dataset.act,id=b.dataset.id;
-  if(act==="v15edit"){yltaGuideEdit(b.dataset.game);return}
+  if(act==="edit-guide-data"){yltaGuideEdit(b.dataset.game);return}
   if(act==="star"){
     S.items.forEach(function(x){if(x.id===id){x.star=x.star?undefined:true}});
     save();renderList();

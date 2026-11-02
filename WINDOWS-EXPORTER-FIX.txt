@@ -1,6 +1,0 @@
-YourLTA v27
-
-The site retains the Aurora UI and manual JSON import.
-The PSN exporter is the original previously working code, with a new WINDOWS-LAUNCH-HELP.txt for blocked scripts and a direct Node.js alternative.
-
-The site cannot override Windows Internet security warnings.

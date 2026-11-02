@@ -1,1 +1,0 @@
-YLTA v8: Fix sidebar branding using a high-contrast inline SVG and readable YLTA text. Add rearrange/reset controls to all Stats cards and Dashboard collapsible sections. Drag by grip or use arrow buttons; orders save to localStorage. Add compact masonry-like Stats layout. No changes to trophy database or Google verification.

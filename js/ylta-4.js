@@ -1,6 +1,6 @@
 
 
-/* YourLTA v13 — accessibility, fast actions, and progressive disclosure */
+/* accessibility, fast actions, and progressive disclosure */
 (function(){
  'use strict';
  const $=s=>document.querySelector(s);

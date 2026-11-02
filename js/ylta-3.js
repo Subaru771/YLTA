@@ -1,5 +1,5 @@
 
-/* YLTA v8 analytics layout and accessible dashboard arrangement. All choices stay in this browser. */
+/* analytics layout and accessible dashboard arrangement. All choices stay in this browser. */
 (function(){
  'use strict';
  var STATS_KEY='ylta.stats.layout.v2',DASH_KEY='ylta.dashboard.order.v1';

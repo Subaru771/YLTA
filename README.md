@@ -17,7 +17,6 @@ A free browser app for PlayStation trophy hunters: explore collection statistics
 
 ![YourLTA promotional graphic](assets/promo/yourlta-social.png)
 
-
 ## Features
 
 - **Overview:** collection summary, completion progress and trophy statistics
@@ -117,7 +116,7 @@ For potential vulnerabilities, read [SECURITY.md](SECURITY.md) before opening an
 
 ## For maintainers
 
-Rebuild the matching download ZIP after changing a tool, so the downloadable copy doesn't drift from its source. Likewise, regenerate the versioned source-download ZIP when updating the app.
+Rebuild the matching companion-tool ZIP after changing a tool, so the downloadable copy doesn't drift from its source. The complete current source is available directly through GitHub.
 
 ## License
 

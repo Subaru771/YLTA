@@ -13,10 +13,10 @@
 .gcard .ghead{align-items:flex-start;gap:12px}
 .gcard .ghead h3{overflow-wrap:anywhere;line-height:1.3}
 .gcard .actions{margin-top:auto;flex-wrap:wrap}
-.ylta-v15-meta{display:flex;flex-wrap:wrap;gap:8px;margin:3px 0}
-.ylta-v15-chip{border:1px solid var(--line);background:var(--surface-2);border-radius:9px;padding:6px 9px;font-size:12px;color:var(--fg)}
-.ylta-v15-resource{display:flex;flex-wrap:wrap;gap:7px;margin:9px 0}
-.ylta-v15-resource .btn{white-space:normal;text-align:center}
+.ylta-guide-meta{display:flex;flex-wrap:wrap;gap:8px;margin:3px 0}
+.ylta-guide-chip{border:1px solid var(--line);background:var(--surface-2);border-radius:9px;padding:6px 9px;font-size:12px;color:var(--fg)}
+.ylta-guide-resources{display:flex;flex-wrap:wrap;gap:7px;margin:9px 0}
+.ylta-guide-resources .btn{white-space:normal;text-align:center}
 @media(max-width:600px){#view-stats .tiles,.dash-kpis{grid-template-columns:repeat(2,minmax(0,1fr))!important}#view-stats .tile,.dash-kpis .tile{padding:12px!important;min-height:96px}#view-stats .tile b,.dash-kpis .tile b{font-size:clamp(1.1rem,5vw,1.65rem)!important}}
 
 
@@ -49,7 +49,7 @@
 .ylta-trust-panel{margin:15px 0 18px;padding:17px;border:1px solid color-mix(in srgb,var(--accent) 35%,var(--line));border-radius:16px;background:linear-gradient(130deg,rgba(55,145,255,.10),rgba(145,95,240,.075) 65%,rgba(40,205,165,.055))}
 .ylta-trust-head{display:flex;gap:11px;align-items:center;margin-bottom:8px}.ylta-trust-head strong{font-size:14px}.ylta-trust-icon{display:grid;place-items:center;width:36px;height:36px;flex:none;border-radius:11px;background:rgba(55,145,255,.16);color:#69c5ff;font-size:19px}.ylta-trust-panel p,.ylta-trust-panel li{font-size:12px;line-height:1.65;color:var(--muted)}.ylta-trust-panel p{margin:7px 0}.ylta-trust-panel details{margin-top:10px;padding:10px 12px;border:1px solid var(--line);border-radius:11px;background:var(--surface)}.ylta-trust-panel summary{cursor:pointer;font-size:12px;font-weight:700;color:var(--fg)}.ylta-trust-panel code{overflow-wrap:anywhere;word-break:break-all;font-size:11px}.ylta-trust-panel pre{overflow-x:auto;white-space:pre-wrap;overflow-wrap:anywhere;padding:10px;border-radius:9px;background:rgba(0,0,0,.15);font-size:11px}.ylta-trust-links{display:flex;flex-wrap:wrap;gap:6px 13px;margin-top:8px}.ylta-trust-links a{font-size:12px}.ylta-trust-panel ol{padding-left:20px;margin:7px 0}
 
-/* v33 mobile viewport stability */
+/* mobile viewport stability */
 @media(max-width:760px){html,body{width:100%;max-width:100%;overflow-x:hidden}main,section,.card,.panel{min-width:0}input,textarea,select{max-width:100%;box-sizing:border-box}#yltaMobileApi,#yltaMobileToken{width:100%;min-width:0}}
 
 /* UI styling */
@@ -165,7 +165,7 @@
 :root[data-theme="light"] .ylta-main,:root[data-theme="dark"] .ylta-main{background:transparent!important}
 :root[data-theme="light"] .studio-section h3,:root[data-theme="light"] .studio-section label{color:#182a3b!important}
 
-/* v45 Hunter Studio: restrained premium editor with clearer hierarchy */
+/* Hunter Studio: restrained premium editor with clearer hierarchy */
 .share-studio{border-radius:24px!important;padding:clamp(16px,2.5vw,32px)!important}
 .share-studio .studio-heading{padding-bottom:18px;border-bottom:1px solid var(--line)}
 .share-studio .studio-heading .eyebrow{font-size:11px;letter-spacing:.16em;font-weight:850;color:var(--accent)}
@@ -582,7 +582,7 @@ input[type=text],input[type=search],input[type=number],input[type=datetime-local
 @media(max-width:700px){.ylta-guide-grid{grid-template-columns:1fr}.ylta-guide-helper>.btn{width:100%;text-align:center}.ylta-guide-head h3{font-size:24px}}
 
 
-/* YLTA v8 — always-visible inline brand and user-arrangeable analytics */
+/* always-visible inline brand and user-arrangeable analytics */
 .ylta-sidebar .ylta-logo{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;width:100%;min-height:108px;padding:10px 4px 16px;border-bottom:1px solid #1b4668;margin-bottom:7px;border-radius:0;text-decoration:none;background:linear-gradient(180deg,#07172b,#05111f)}
 .ylta-brand-icon{display:grid;place-items:center;flex:0 0 64px;width:64px;height:64px;filter:drop-shadow(0 0 10px #2ca9ff35)}
 .ylta-brand-icon svg{display:block;width:100%;height:100%;overflow:visible}
@@ -705,7 +705,7 @@ input[type=text],input[type=search],input[type=number],input[type=datetime-local
 @media(max-width:850px){.goal-form-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:620px){.goal-metrics{gap:7px}.goal-metric{padding:12px 9px}.goal-metric b{font-size:22px}.goal-form-grid{grid-template-columns:1fr}.goal-toolbar>.hint{display:none}.goal-card{padding:13px}.goals-hero{padding:17px}}
 
-/* v11 smart goals, earned milestones, and no-data onboarding */
+/* smart goals, earned milestones, and no-data onboarding */
 #goalTargetField[hidden],#goalGameField[hidden],#goalStepsField[hidden]{display:none!important}
 .goals-hero .actions{flex-wrap:wrap}
 .goal-smart-note{padding:11px 13px;border-radius:10px;background:var(--surface-2);border:1px solid var(--line);font-size:12px;color:var(--muted);line-height:1.5}
@@ -752,7 +752,7 @@ input[type=text],input[type=search],input[type=number],input[type=datetime-local
 @media(max-width:900px){.goal-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.ylta-first-steps{grid-template-columns:1fr}}
 @media(max-width:620px){.achievement-section summary{padding:15px}.badge-grid{padding:10px 13px 15px;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.badge-toolbar{padding:10px 13px 0}.achievement{padding:11px}.goals-hero .actions .btn{flex:1}}
 
-/* YourLTA v13 — refined interface, lighter cognitive load, and mobile-first controls */
+/* refined interface, lighter cognitive load, and mobile-first controls */
 :root{
   --bg:#080e1b;--surface:#101b2e;--surface-2:#15243a;--line:#243a56;
   --fg:#eff7ff;--muted:#9caec5;--accent-soft:#123956;
@@ -972,18 +972,18 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent);outline:2px s
 .stats-board .brow .l{min-width:0;line-height:1.3;overflow-wrap:normal}
 .stats-board .brow .track{min-width:0;width:100%}
 .stats-board .brow .n{width:auto!important;min-width:max-content!important;white-space:nowrap!important;line-height:1.3!important;text-align:right!important;font-variant-numeric:tabular-nums;font-size:12px!important}
-.v16-ratio{white-space:nowrap;display:inline-block}
+.trophy-completion-ratio{white-space:nowrap;display:inline-block}
 .stats-board>.stats-card{min-width:0}
 @media(max-width:420px){.stats-board .brow{grid-template-columns:minmax(68px,90px) minmax(20px,1fr) max-content!important;gap:6px!important}.stats-board .brow .n{font-size:11px!important}}
 /* Import center: clear stages, quieter instructions, advanced items folded */
 #ioInner{display:flex;flex-direction:column;gap:16px}
-#ioInner>.ylta-v16-sync,#ioInner>.ylta-import-main,#ioInner>.psnp-import,#ioInner>.import-wizard{min-width:0}
-.ylta-v16-sync{padding:17px 20px;border:1px solid #2a5976;border-radius:15px;background:linear-gradient(110deg,#112d47,#102033)}
-.ylta-v16-sync h3{margin:0 0 5px;font-size:16px}
-.ylta-v16-sync .v16-relative{font-size:25px;font-weight:800;letter-spacing:-.03em;margin:7px 0}
-.ylta-v16-sync p{color:#b0c5d6;font-size:12px;margin:4px 0}
+#ioInner>.ylta-import-sync-status,#ioInner>.ylta-import-main,#ioInner>.psnp-import,#ioInner>.import-wizard{min-width:0}
+.ylta-import-sync-status{padding:17px 20px;border:1px solid #2a5976;border-radius:15px;background:linear-gradient(110deg,#112d47,#102033)}
+.ylta-import-sync-status h3{margin:0 0 5px;font-size:16px}
+.ylta-import-sync-status .import-sync-relative{font-size:25px;font-weight:800;letter-spacing:-.03em;margin:7px 0}
+.ylta-import-sync-status p{color:#b0c5d6;font-size:12px;margin:4px 0}
 #yltaImportData{order:2;padding:20px;border:1px solid #2d4c66;border-radius:15px}
-.ylta-v16-sync{order:0}#yltaImportWizard{order:1}
+.ylta-import-sync-status{order:0}#yltaImportWizard{order:1}
 #psnpHtmlSection{order:3}
 #psnGetStarted{order:4}
 #syncHelp{order:5}
@@ -992,8 +992,8 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent);outline:2px s
 #yltaImportData .btn.danger{margin-left:auto}
 #list .row{border-radius:14px;transition:border-color .15s,box-shadow .15s}
 #list .row:hover{border-color:#4ba9db}
-.gcard .ylta-v15-resource{gap:6px}
-.gcard .ylta-v15-resource .btn{font-size:11px}
+.gcard .ylta-guide-resources{gap:6px}
+.gcard .ylta-guide-resources .btn{font-size:11px}
 
 /* UI styling */
 :root{--ui-radius:19px;--panel-shadow:0 12px 34px #020d2333;--accent:#38c9ff;--accent-soft:#133b61;--ylta-purple:#9a7bff;--ylta-mint:#49e0c2;--ylta-pink:#ff8ec2}
@@ -1125,7 +1125,7 @@ body{background-color:var(--bg)!important;background-image:radial-gradient(ellip
  <p><strong>On phone:</strong> Web import transmits your NPSSO credential over HTTPS to the YourLTA-operated server on Render, which requests trophies from PSN. This is unofficial account access; NPSSO is a sensitive credential. The supplied server code does not intentionally save tokens or log request bodies. This is not a guarantee about hosting infrastructure or the deployed service.</p>
  <p><strong>On Windows PC:</strong> Download and run the local exporter, then import its JSON file. This avoids sending NPSSO to YourLTA's import server; the exporter still communicates with Sony using unofficial access.</p>
  <p><strong>After import:</strong> Review and apply your trophies. Collection data and goals are saved in this browser, with no automatic cloud sync. Export a JSON backup before clearing site data or moving devices.</p>
- <p><a href="privacy.html">Privacy policy</a> · <a href="https://github.com/Subaru771/YLTA/archive/refs/heads/main.zip" download>Download this version’s source</a> · <a href="mobile-server/mobile-api.mjs">Read import-server source</a></p>
+ <p><a href="privacy.html">Privacy policy</a> · <a href="https://github.com/Subaru771/YLTA/archive/refs/heads/main.zip">Download this version’s source</a> · <a href="mobile-server/mobile-api.mjs">Read import-server source</a></p>
  </details><div class="launch-footer"><a href="feedback.html">Give feedback</a><a href="privacy.html">Privacy policy</a><span>Made for trophy hunters.</span></div></div>
 </section>
 
@@ -1161,7 +1161,7 @@ body{background-color:var(--bg)!important;background-image:radial-gradient(ellip
   <section class="panel" id="io" hidden aria-labelledby="ioTitle">
     <div class="panel-head"><h2 id="ioTitle">Import and export</h2><button class="panel-minibtn" id="ioCollapse" type="button" aria-expanded="true" aria-controls="ioInner" title="Collapse import section">⌃</button></div>
     <div id="ioInner">
-    <section class="ylta-v16-sync" aria-live="polite"><h3>Collection update status</h3><div id="yltaLastImportRelative" class="v16-relative">Checking import history…</div><p id="yltaLastImportExact">YourLTA imports your selected JSON file locally. This is not a live PlayStation Network sync.</p><p id="yltaBackupHint"></p></section>
+    <section class="ylta-import-sync-status" aria-live="polite"><h3>Collection update status</h3><div id="yltaLastImportRelative" class="import-sync-relative">Checking import history…</div><p id="yltaLastImportExact">YourLTA imports your selected JSON file locally. This is not a live PlayStation Network sync.</p><p id="yltaBackupHint"></p></section>
     <section id="yltaSimpleImport" class="ylta-simple-import">
       <h3>Import your trophies</h3>
       <p class="hint"><strong>Start with PlayStation Network.</strong> PSNProfiles is an optional enhancement, not a required setup step. You can add it later or never use it.</p>
@@ -1205,8 +1205,8 @@ body{background-color:var(--bg)!important;background-image:radial-gradient(ellip
           <p>The exporter is a downloadable <strong>CMD + JavaScript</strong> utility, not a signed Windows application. Windows may flag scripts downloaded from the internet, including legitimate ones. A warning is a reason to inspect the file, not proof that it is safe or unsafe.</p>
           <p><strong>What it does:</strong> opens Sony's sign-in and NPSSO pages, uses the token you enter locally to request trophy data, and writes JSON/CSV files on your computer. <strong>It does not automatically send your token or trophy file to YourLTA.</strong> YourLTA imports the JSON you select manually.</p>
           <details><summary>See the source code (no installation required)</summary>
-            <p>Read the actual scripts packaged with this download. They are plain-text files, so you can inspect them before running anything.</p>
-            <div class="ylta-trust-links"><a href="./downloads/exporter-source-export.mjs.txt" target="_blank" rel="noopener">Trophy exporter source</a><a href="./downloads/exporter-source-START-EXPORT.cmd.txt" target="_blank" rel="noopener">Windows launcher source</a><a href="./downloads/exporter-source-package.json.txt" target="_blank" rel="noopener">Dependencies</a><a href="./downloads/exporter-source-README.txt.txt" target="_blank" rel="noopener">Instructions</a></div>
+            <p>Read the actual scripts packaged with this download. These links open the published source files on GitHub, where you can inspect them before running anything.</p>
+            <div class="ylta-trust-links"><a href="https://github.com/Subaru771/YLTA/blob/main/tools/windows-exporter/export.mjs" target="_blank" rel="noopener">Trophy exporter source</a><a href="https://github.com/Subaru771/YLTA/blob/main/tools/windows-exporter/START-EXPORT.cmd" target="_blank" rel="noopener">Windows launcher source</a><a href="https://github.com/Subaru771/YLTA/blob/main/tools/windows-exporter/package.json" target="_blank" rel="noopener">Dependencies</a><a href="https://github.com/Subaru771/YLTA/blob/main/tools/windows-exporter/README.txt" target="_blank" rel="noopener">Instructions</a></div>
             <p>The exporter uses the community <code>psn-api</code> npm dependency, which also runs code. Source inspection and a matching checksum are useful transparency measures, but neither is a malware-free certification.</p>
           </details>
           <details><summary>Verify your ZIP with SHA-256</summary>
@@ -1365,11 +1365,11 @@ Earn the platinum trophy"></textarea><span class="hint" id="goalStepsHint">You c
 
 
 
-<script src="js/ylta-1.js?v=56" defer></script>
+<script src="js/ylta-1.js?v=1.0" defer></script>
 
-<script src="js/ylta-2.js?v=56" defer></script>
+<script src="js/ylta-2.js?v=1.0" defer></script>
 
-<script src="js/ylta-3.js?v=56" defer></script>
+<script src="js/ylta-3.js?v=1.0" defer></script>
 
-<script src="js/ylta-4.js?v=56" defer></script>
-<script src="js/ylta-5.js?v=56" defer></script></body></html>
+<script src="js/ylta-4.js?v=1.0" defer></script>
+<script src="js/ylta-5.js?v=1.0" defer></script></body></html>

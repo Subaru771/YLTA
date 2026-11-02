@@ -1,6 +1,6 @@
 # Security reporting
 
-YourLTA is an early beta and is not independently security audited. NPSSO credentials authorize account access and must be treated as sensitive.
+YourLTA v1.0 has not been independently security audited. NPSSO credentials authorize account access and must be treated as sensitive.
 
 Do not publish tokens, passwords, private exports or exploitable vulnerability details in public issues. If the repository offers GitHub's private **Report a vulnerability** option, use it. Otherwise, ask the maintainer for a private reporting channel without including exploit details. No private reporting address has been configured in this package.
 
