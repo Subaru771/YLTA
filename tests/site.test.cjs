@@ -76,3 +76,12 @@ test('self-hosted WOFF2 fonts have local CSS, assets and OFL notices', () => {
     assert.match(file(path), /SIL OPEN FONT LICENSE/);
   }
 });
+
+
+test('companion downloads use the official GitHub Release, not committed ZIP copies', () => {
+  for (const name of ['ylta-psn-sync-kit.zip','ylta-psnprofiles-browser-helper.zip']) {
+    assert.match(html, new RegExp('https://github\\.com/Subaru771/YLTA/releases/download/v1\\.0/' + name.replaceAll('.', '\\.') ));
+    assert.equal(existsSync(join(root, 'downloads', name)), false, 'Committed release ZIP should not exist: ' + name);
+  }
+  assert(existsSync(join(root,'scripts/build-release-archives.py')), 'Missing deterministic release packager');
+});

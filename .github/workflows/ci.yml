@@ -25,5 +25,9 @@ jobs:
           for file in js/*.js mobile-server/*.mjs tools/windows-exporter/*.mjs tools/psnprofiles-helper/*.js; do
             node --check "$file"
           done
+      - name: Verify reproducible companion ZIP packaging
+        run: |
+          python3 scripts/build-release-archives.py
+          python3 scripts/build-release-archives.py --verify-only
       - name: Run source and import regression tests
         run: node --test tests/*.test.cjs tests/*.test.mjs

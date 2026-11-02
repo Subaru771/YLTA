@@ -95,7 +95,7 @@ The [screenshot workflow](https://github.com/Subaru771/YLTA/actions/workflows/sc
 
 ## Deployment
 
-The public site is hosted on Cloudflare Pages. Keep `index.html`, `js/`, `assets/`, `downloads/` and `_headers` at the deployment root. Keep `robots.txt`, `sitemap.xml` and the `google*.html` verification file there as well; moving them into a documentation directory would disrupt search-engine discovery or site verification. Static deployment does not deploy the Node server, and there is no need to move to GitHub Pages.
+The public site is hosted on Cloudflare Pages. Keep `index.html`, `js/`, `assets/` and `_headers` at the deployment root. Companion downloads are hosted as GitHub Release assets, not duplicated in the website repository. Keep `robots.txt`, `sitemap.xml` and the `google*.html` verification file there as well; moving them into a documentation directory would disrupt search-engine discovery or site verification. Static deployment does not deploy the Node server, and there is no need to move to GitHub Pages.
 
 **For your own instance**, these three must agree with your deployment:
 
@@ -121,8 +121,8 @@ Configure the environment through your host, and never commit credentials. The s
 
 | Tool | Source | Download |
 | --- | --- | --- |
-| Windows exporter | [`tools/windows-exporter`](tools/windows-exporter) | `downloads/ylta-psn-sync-kit.zip` |
-| PSNProfiles browser helper | [`tools/psnprofiles-helper`](tools/psnprofiles-helper) | `downloads/ylta-psnprofiles-browser-helper.zip` |
+| Windows exporter | [`tools/windows-exporter`](tools/windows-exporter) | [Download v1.0 ZIP](https://github.com/Subaru771/YLTA/releases/download/v1.0/ylta-psn-sync-kit.zip) |
+| PSNProfiles browser helper | [`tools/psnprofiles-helper`](tools/psnprofiles-helper) | [Download v1.0 ZIP](https://github.com/Subaru771/YLTA/releases/download/v1.0/ylta-psnprofiles-browser-helper.zip) |
 
 Other code to inspect: the [frontend JavaScript](js) and the [import-server source](mobile-server/mobile-api.mjs).
 
@@ -142,7 +142,7 @@ For potential vulnerabilities, read [SECURITY.md](SECURITY.md) before opening an
 
 ## For maintainers
 
-Rebuild the matching companion-tool ZIP after changing a tool, so the downloadable copy doesn't drift from its source. The complete current source is available directly through GitHub.
+Companion ZIPs are built deterministically by `scripts/build-release-archives.py` using the source at the matching Git tag. [Release Assets Actions](.github/workflows/release-assets.yml) uploads both ZIPs to the GitHub Release, avoiding committed ZIP drift. Do not manually modify a packaged archive. The complete current source is available directly through GitHub.
 
 ## License
 
