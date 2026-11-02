@@ -13,7 +13,7 @@ A free browser app for PlayStation trophy hunters: explore collection statistics
 </div>
 
 > [!NOTE]
-> Created by **Hassan Al-Khafaji**. Built with AI assistance and currently in beta testing. Independent project, not affiliated with Sony, PlayStation or PSNProfiles.
+> Built with AI assistance and currently in beta testing. Independent project, not affiliated with Sony, PlayStation or PSNProfiles.
 
 ![YourLTA public beta graphic](assets/promo/yourlta-social.png)
 
