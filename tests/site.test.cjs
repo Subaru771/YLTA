@@ -85,3 +85,15 @@ test('companion downloads use the official GitHub Release, not committed ZIP cop
   }
   assert(existsSync(join(root,'scripts/build-release-archives.py')), 'Missing deterministic release packager');
 });
+
+
+test('release workflow builds ZIPs with a published SHA-256 checksum manifest', () => {
+  const builder = file('scripts/build-release-archives.py');
+  const release = file('.github/workflows/release-assets.yml');
+  const ci = file('.github/workflows/ci.yml');
+  assert(builder.includes('SHA256SUMS.txt'));
+  assert(release.includes('dist/SHA256SUMS.txt'));
+  assert(release.includes('sha256sum -c SHA256SUMS.txt'));
+  assert(ci.includes('sha256sum -c SHA256SUMS.txt'));
+  assert(file('README.md').includes('SHA256SUMS.txt'));
+});

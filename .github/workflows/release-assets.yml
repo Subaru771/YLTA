@@ -35,14 +35,21 @@ jobs:
           git rev-parse --verify "refs/tags/$RELEASE_TAG^{commit}"
           mkdir -p /tmp/ylta-release-source
           git archive "refs/tags/$RELEASE_TAG" | tar -xf - -C /tmp/ylta-release-source
-      - name: Build and verify deterministic source archives
+      - name: Build and verify deterministic source archives and checksums
         run: |
-          python scripts/build-release-archives.py --source-root /tmp/ylta-release-source --output-dir dist --license-file LICENSE
-          python scripts/build-release-archives.py --source-root /tmp/ylta-release-source --output-dir dist --license-file LICENSE --verify-only
-      - name: Upload ZIPs to existing release
+          # v1.0 predates LICENSE; newer release tags should contain their own LICENSE.
+          if [ -f /tmp/ylta-release-source/LICENSE ]; then
+            LICENSE_PATH=/tmp/ylta-release-source/LICENSE
+          else
+            LICENSE_PATH="$GITHUB_WORKSPACE/LICENSE"
+          fi
+          python scripts/build-release-archives.py --source-root /tmp/ylta-release-source --output-dir dist --license-file "$LICENSE_PATH"
+          python scripts/build-release-archives.py --source-root /tmp/ylta-release-source --output-dir dist --license-file "$LICENSE_PATH" --verify-only
+          (cd dist && sha256sum -c SHA256SUMS.txt)
+      - name: Upload ZIPs and checksums to existing release
         env:
           GH_TOKEN: ${{ github.token }}
           RELEASE_TAG: ${{ github.event.release.tag_name || inputs.tag }}
         run: |
           gh release view "$RELEASE_TAG" >/dev/null
-          gh release upload "$RELEASE_TAG" dist/ylta-psn-sync-kit.zip dist/ylta-psnprofiles-browser-helper.zip --clobber
+          gh release upload "$RELEASE_TAG" dist/ylta-psn-sync-kit.zip dist/ylta-psnprofiles-browser-helper.zip dist/SHA256SUMS.txt --clobber

@@ -124,6 +124,18 @@ Configure the environment through your host, and never commit credentials. The s
 | Windows exporter | [`tools/windows-exporter`](tools/windows-exporter) | [Download v1.0 ZIP](https://github.com/Subaru771/YLTA/releases/download/v1.0/ylta-psn-sync-kit.zip) |
 | PSNProfiles browser helper | [`tools/psnprofiles-helper`](tools/psnprofiles-helper) | [Download v1.0 ZIP](https://github.com/Subaru771/YLTA/releases/download/v1.0/ylta-psnprofiles-browser-helper.zip) |
 
+### Verify companion downloads with SHA-256
+
+The [official v1.0 release](https://github.com/Subaru771/YLTA/releases/tag/v1.0) provides the exporter and PSNProfiles helper ZIPs plus `SHA256SUMS.txt`. Save all three files in the same folder. On Linux or macOS, verify both downloaded files with:
+
+```bash
+sha256sum -c SHA256SUMS.txt
+```
+
+On Windows PowerShell, run `Get-FileHash .\\ylta-psn-sync-kit.zip -Algorithm SHA256` or `Get-FileHash .\\ylta-psnprofiles-browser-helper.zip -Algorithm SHA256` and compare the hexadecimal hash with its `SHA256SUMS.txt` entry.
+
+GitHub Actions packages the source from the corresponding Git tag, checks ZIP contents against their source files, generates SHA-256 hashes, and uploads the files to that release. The checksum detects corrupted or modified downloads; it is **not a digital signature** and does not independently protect against a compromised release account.
+
 Other code to inspect: the [frontend JavaScript](js) and the [import-server source](mobile-server/mobile-api.mjs).
 
 ## Feedback and limitations

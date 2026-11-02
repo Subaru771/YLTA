@@ -51,14 +51,22 @@ def main():
     parser.add_argument("--license-file", type=Path, default=ROOT / "LICENSE")
     parser.add_argument("--verify-only", action="store_true")
     options = parser.parse_args()
+    hashes = {}
     for name, members in PACKAGES.items():
         dst = options.output_dir.resolve() / name
         if not options.verify_only:
             build(options.source_root.resolve(), dst, members, options.license_file.resolve())
         verify(options.source_root.resolve(), dst, members, options.license_file.resolve())
         digest = hashlib.sha256(dst.read_bytes()).hexdigest()
+        hashes[name] = digest
         print(f"{name}: {dst.stat().st_size} bytes, SHA256 {digest}")
-    print("All release ZIPs match the source files.")
+    checksums = "".join(f"{hashes[name]}  {name}\n" for name in sorted(hashes))
+    manifest = options.output_dir.resolve() / "SHA256SUMS.txt"
+    if options.verify_only:
+        assert manifest.read_text(encoding="utf-8") == checksums, "Invalid SHA256SUMS.txt"
+    else:
+        manifest.write_text(checksums, encoding="utf-8")
+    print("Companion ZIPs and SHA256SUMS.txt match source.")
 
 if __name__ == "__main__":
     main()

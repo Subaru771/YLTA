@@ -29,5 +29,6 @@ jobs:
         run: |
           python3 scripts/build-release-archives.py
           python3 scripts/build-release-archives.py --verify-only
+          (cd dist && sha256sum -c SHA256SUMS.txt)
       - name: Run source and import regression tests
         run: node --test tests/*.test.cjs tests/*.test.mjs
