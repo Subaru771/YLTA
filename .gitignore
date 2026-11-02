@@ -1,0 +1,10 @@
+# Generated release files. GitHub Releases owns distributable ZIPs.
+dist/
+node_modules/
+**/node_modules/
+.env
+.env.*
+!.env.example
+.DS_Store
+__pycache__/
+*.pyc
