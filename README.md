@@ -8,14 +8,28 @@
 
 A free browser app for PlayStation trophy hunters: explore collection statistics, compare trophy rarity, set personal goals and create shareable hunter cards.
 
-[**Launch YourLTA v1.0**](https://yourlta.pages.dev/) · [Privacy policy](https://yourlta.pages.dev/privacy.html) · [Security](SECURITY.md) · [Contributing](CONTRIBUTING.md)
+[**Open YourLTA v1.0**](https://yourlta.pages.dev/) · [Official release](https://github.com/Subaru771/YLTA/releases/tag/v1.0) · [Privacy](https://yourlta.pages.dev/privacy.html) · [Security](SECURITY.md) · [Contributing](CONTRIBUTING.md)
+
+[![YLTA checks](https://github.com/Subaru771/YLTA/actions/workflows/ci.yml/badge.svg)](https://github.com/Subaru771/YLTA/actions/workflows/ci.yml)
 
 </div>
 
 > [!NOTE]
  > Built with AI assistance. Independent project, not affiliated with Sony, PlayStation or PSNProfiles.
 
-![YourLTA promotional graphic](assets/promo/yourlta-social.png)
+## Screenshots
+
+Actual browser screenshots of YourLTA v1.0 using the app's **fictional example trophies**. These are not mockups or captures of anyone's PSN account.
+
+| Dashboard · desktop | Analytics · desktop |
+| --- | --- |
+| ![Real YLTA desktop dashboard](assets/screenshots/dashboard-desktop.png) | ![Real YLTA trophy analytics dashboard](assets/screenshots/analytics-desktop.png) |
+
+**Mobile layout**
+
+<img src="assets/screenshots/dashboard-mobile.png" width="320" alt="Real YLTA dashboard displayed at mobile viewport size">
+
+
 
 ## Features
 
@@ -67,9 +81,21 @@ Then open `http://localhost:8000`. JSON/CSV import, local storage and most front
 > [!NOTE]
 > Phone/web import cannot run from a `file:` URL, and the production import server only accepts its configured origin. A local frontend therefore cannot use it without a separately configured server.
 
+## Automated tests
+
+Node.js 22+ is required for the development checks. No dependency installation or account login is needed:
+
+```bash
+node --test
+```
+
+[GitHub Actions CI](https://github.com/Subaru771/YLTA/actions/workflows/ci.yml) runs JavaScript syntax checks and the regression suite for every push and pull request targeting `main`. Coverage includes trophy rarity tiers, import parsing, backup metadata and static deployment integrity. **These are regression checks, not a live PSN import test or a security audit.**
+
+The [screenshot workflow](https://github.com/Subaru771/YLTA/actions/workflows/screenshots.yml) is manually triggered and captures real Chromium renders using fictional sample data. It commits generated desktop and mobile PNGs to `assets/screenshots/`.
+
 ## Deployment
 
-The public site is hosted on Cloudflare Pages. Keep `index.html`, `js/`, `assets/`, `downloads/` and `_headers` at the deployment root. Static deployment does not deploy the Node server, and there is no need to move to GitHub Pages.
+The public site is hosted on Cloudflare Pages. Keep `index.html`, `js/`, `assets/`, `downloads/` and `_headers` at the deployment root. Keep `robots.txt`, `sitemap.xml` and the `google*.html` verification file there as well; moving them into a documentation directory would disrupt search-engine discovery or site verification. Static deployment does not deploy the Node server, and there is no need to move to GitHub Pages.
 
 **For your own instance**, these three must agree with your deployment:
 
