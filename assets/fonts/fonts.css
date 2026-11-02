@@ -1,0 +1,8 @@
+/* Self-hosted OFL-1.1 fonts. Source and notices: assets/fonts/licenses/ */
+@font-face{font-family:'Barlow';src:url('./barlow-regular.woff2') format('woff2');font-style:normal;font-weight:400;font-display:swap}
+@font-face{font-family:'Barlow';src:url('./barlow-medium.woff2') format('woff2');font-style:normal;font-weight:500;font-display:swap}
+@font-face{font-family:'Barlow';src:url('./barlow-semibold.woff2') format('woff2');font-style:normal;font-weight:600;font-display:swap}
+@font-face{font-family:'Barlow Condensed';src:url('./barlow-condensed-medium.woff2') format('woff2');font-style:normal;font-weight:500;font-display:swap}
+@font-face{font-family:'Barlow Condensed';src:url('./barlow-condensed-semibold.woff2') format('woff2');font-style:normal;font-weight:600;font-display:swap}
+@font-face{font-family:'Barlow Condensed';src:url('./barlow-condensed-bold.woff2') format('woff2');font-style:normal;font-weight:700;font-display:swap}
+@font-face{font-family:'JetBrains Mono';src:url('./jetbrains-mono-variable.woff2') format('woff2');font-style:normal;font-weight:400 500;font-display:swap}
