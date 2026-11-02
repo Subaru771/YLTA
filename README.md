@@ -8,14 +8,14 @@
 
 A free browser app for PlayStation trophy hunters: explore collection statistics, compare trophy rarity, set personal goals and create shareable hunter cards.
 
-[**Try the public beta**](https://yourlta.pages.dev/) · [Privacy policy](https://yourlta.pages.dev/privacy.html) · [Changelog](CHANGELOG.md) · [Security](SECURITY.md) · [Contributing](CONTRIBUTING.md)
+[**Launch YourLTA v1.0**](https://yourlta.pages.dev/) · [Privacy policy](https://yourlta.pages.dev/privacy.html) · [Security](SECURITY.md) · [Contributing](CONTRIBUTING.md)
 
 </div>
 
 > [!NOTE]
-> Built with AI assistance and currently in beta testing. Independent project, not affiliated with Sony, PlayStation or PSNProfiles.
+ > Built with AI assistance. Independent project, not affiliated with Sony, PlayStation or PSNProfiles.
 
-![YourLTA public beta graphic](assets/promo/yourlta-social.png)
+![YourLTA promotional graphic](assets/promo/yourlta-social.png)
 
 *Promotional artwork, not an application screenshot. The feature video uses sample data and illustrative visuals.*
 
@@ -91,7 +91,7 @@ npm install
 npm start
 ```
 
-Configure the environment through your host, and never commit credentials. The server has basic origin checks, request limits and concurrency limits, but these are not user authentication. This beta is not a production security certification.
+Configure the environment through your host, and never commit credentials. The server has basic origin checks, request limits and concurrency limits, but these are not user authentication. These safeguards are not a security certification.
 
 ## Companion tools
 
@@ -102,7 +102,7 @@ Configure the environment through your host, and never commit credentials. The s
 
 Other code to inspect: the [frontend JavaScript](js) and the [import-server source](mobile-server/mobile-api.mjs).
 
-## Feedback and known limitations
+## Feedback and limitations
 
 Use the Issues tab for ordinary bugs and feature requests. Include your device/browser, import method, reproduction steps and the error wording, with private data removed. The site's feedback page only generates a local text report and does not submit it automatically.
 
@@ -114,7 +114,7 @@ For potential vulnerabilities, read [SECURITY.md](SECURITY.md) before opening an
 - Browser data can be lost if site storage is cleared. Backups are your responsibility.
 - There is no automatic cloud sync or guarantee of complete trophy coverage.
 - Rarity values depend on the source and on when the data was retrieved.
-- Live PSN imports and complete cross-browser layout were not verified in the packaging environment. Targeted import-review, delete-confirmation and summary-logic checks passed during development.
+- Live PSN imports and complete cross-browser compatibility have not been independently verified.
 
 ## For maintainers
 
