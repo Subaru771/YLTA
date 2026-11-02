@@ -17,7 +17,6 @@ A free browser app for PlayStation trophy hunters: explore collection statistics
 
 ![YourLTA promotional graphic](assets/promo/yourlta-social.png)
 
-*Promotional artwork, not an application screenshot. The feature video uses sample data and illustrative visuals.*
 
 ## Features
 
