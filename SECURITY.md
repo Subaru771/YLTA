@@ -6,4 +6,4 @@ Do not publish tokens, passwords, private exports or exploitable vulnerability d
 
 Ordinary UI bugs and feature requests can use public issues with private information removed. Never send a real credential as proof of a bug.
 
-Published source is not proof that a deployed server runs identical code. The phone import server is an additional trust boundary; the local Windows exporter is an alternative, still using unofficial Sony access.
+Published source is not proof that a deployed server runs identical code. Review Render and proxy logging settings so NPSSO credentials and request bodies are not captured. IP-based rate limiting behind a reverse proxy requires a verified trusted-proxy configuration. The phone import server is an additional trust boundary; the local Windows exporter is an alternative, still using unofficial Sony access.

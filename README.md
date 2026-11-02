@@ -115,7 +115,7 @@ npm install
 npm start
 ```
 
-Configure the environment through your host, and never commit credentials. The server has basic origin checks, request limits and concurrency limits, but these are not user authentication. These safeguards are not a security certification.
+Configure the environment through your host, and never commit credentials. The server has basic origin checks, per-IP request limits and concurrency limits, but these are not user authentication. These safeguards are not a security certification.
 
 ## Companion tools
 
@@ -146,4 +146,4 @@ Rebuild the matching companion-tool ZIP after changing a tool, so the downloadab
 
 ## License
 
-No project license has been selected yet. Publishing this repository does not itself grant a general license to reuse or redistribute its original code or artwork. Third-party libraries retain their own licenses. A license can be added once the owner chooses one and reviews the included third-party material.
+The original YLTA application and companion-tool source code is available under the [MIT License](LICENSE). This permits use and modification, including proprietary forks; it does **not** require network-operated modifications to be published. YLTA logos, brand artwork, and promotional imagery are **not** covered by the MIT source-code license. Third-party fonts and dependencies remain subject to their own license terms. See [assets/README.md](assets/README.md) for asset licensing.

@@ -1,5 +1,6 @@
 import http from 'node:http';
 import * as psn from 'psn-api';
+import { clientIp, originAllowed, createRateLimiter } from './security.mjs';
 
 const PORT = Number(process.env.PORT || 3000);
 const ORIGIN = process.env.YLTA_ORIGIN || 'https://yourlta.pages.dev';
@@ -7,10 +8,11 @@ const MAX_BODY = 3072;
 const MAX_ACTIVE = Math.max(1, Math.min(10, Number(process.env.YLTA_MAX_ACTIVE || 3)));
 const WINDOW_MS = 60_000;
 const LIMIT = Math.max(1, Math.min(30, Number(process.env.YLTA_RATE_LIMIT || 6)));
-const clients = new Map();
+const TRUSTED_PROXY_HOPS = Math.max(0, Math.min(4, Number(process.env.YLTA_TRUSTED_PROXY_HOPS || 0)));
+const limiter = createRateLimiter({ limit: LIMIT, windowMs: WINDOW_MS });
 let active = 0;
 const sleep = ms => new Promise(r => setTimeout(r, ms));
-const send = (res, code, data) => { if (!res.headersSent) res.writeHead(code); res.end(JSON.stringify(data)); };
+const send = (res, code, data) => { if (!res.headersSent) res.writeHead(code); res.end(code === 204 ? undefined : JSON.stringify(data)); };
 const errorText = 'Import could not complete. Verify your PSN token or retry later. Sony may be limiting requests.';
 async function retry(fn) {
   for (let n=0;n<3;n++) {
@@ -27,10 +29,10 @@ const server = http.createServer(async (req,res) => {
   res.setHeader('Referrer-Policy','no-referrer');
   res.setHeader('Content-Type','application/json; charset=utf-8');
   res.setHeader('Vary','Origin');
-  if (req.headers.origin === ORIGIN) res.setHeader('Access-Control-Allow-Origin',ORIGIN);
+  if (originAllowed(req.headers.origin, ORIGIN)) res.setHeader('Access-Control-Allow-Origin',ORIGIN);
   if (req.method==='GET' && req.url==='/health') return send(res,200,{ok:true});
   if (req.method==='OPTIONS' && req.url==='/import') {
-    if(req.headers.origin!==ORIGIN) return send(res,403,{error:'Origin not allowed'});
+    if(!originAllowed(req.headers.origin, ORIGIN)) return send(res,403,{error:'Origin not allowed'});
     res.setHeader('Access-Control-Allow-Methods','POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers','Content-Type');
     res.setHeader('Access-Control-Max-Age','600');
@@ -38,15 +40,13 @@ const server = http.createServer(async (req,res) => {
   }
   if(req.url!=='/import' || req.method!=='POST') return send(res,404,{error:'Not found'});
   // Origin checking helps prevent accidental cross-site browser calls, but is not authentication.
-  if(req.headers.origin!==ORIGIN) return send(res,403,{error:'Origin not allowed'});
+  if(!originAllowed(req.headers.origin, ORIGIN)) return send(res,403,{error:'Origin not allowed'});
   if(!String(req.headers['content-type']||'').toLowerCase().startsWith('application/json')) return send(res,415,{error:'JSON required'});
-  const key=req.socket.remoteAddress||'unknown';
-  const now=Date.now();
-  for(const [k,v] of clients) if(now-v.start>WINDOW_MS*2) clients.delete(k);
-  const state=clients.get(key);
-  const slot=(!state||now-state.start>=WINDOW_MS)?{start:now,count:0}:state;
-  slot.count++;clients.set(key,slot);
-  if(slot.count>LIMIT){res.setHeader('Retry-After','60');return send(res,429,{error:'Too many requests. Wait a minute and try again.'});}
+  // Count per observed socket IP; only consult X-Forwarded-For with an
+  // explicitly configured trusted proxy chain. Ignore client-spoofed prefixes.
+  const address = clientIp(req, TRUSTED_PROXY_HOPS);
+  const rate = limiter.check(address);
+  if(!rate.allowed){res.setHeader('Retry-After',String(rate.retryAfter));return send(res,429,{error:'Too many requests. Wait a minute and try again.'});}
   if(active>=MAX_ACTIVE) return send(res,503,{error:'Import service busy. Please retry shortly.'});
   if(Number(req.headers['content-length']||0)>MAX_BODY) return send(res,413,{error:'Request too large'});
   active++;
