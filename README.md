@@ -59,7 +59,7 @@ Actual browser screenshots of YourLTA v1.0 using the app's **fictional example t
 - The supplied import-server code does not intentionally persist NPSSO or log request bodies. That describes this source, not an independent audit or proof of what is deployed. Hosting infrastructure may process technical information.
 - Trophies, goals and preferences are saved with IndexedDB, with a localStorage fallback.
 - There is no automatic cross-device cloud sync. Export a JSON backup before clearing browser storage or changing domains.
-- External fonts and hosting involve third parties.
+- Web fonts are self-hosted under SIL Open Font License 1.1, avoiding third-party Google Fonts requests. Cloudflare still hosts and delivers the site.
 - This source includes no visitor-analytics script. Dashboard-configured injection on a deployed host is separate and should be disclosed if enabled.
 
 ## Rarity: two different sources
@@ -146,4 +146,4 @@ Rebuild the matching companion-tool ZIP after changing a tool, so the downloadab
 
 ## License
 
-The original YLTA application and companion-tool source code is available under the [MIT License](LICENSE). This permits use and modification, including proprietary forks; it does **not** require network-operated modifications to be published. YLTA logos, brand artwork, and promotional imagery are **not** covered by the MIT source-code license. Third-party fonts and dependencies remain subject to their own license terms. See [assets/README.md](assets/README.md) for asset licensing.
+The original YLTA application and companion-tool source code is available under the [MIT License](LICENSE). This permits use and modification, including proprietary forks; it does **not** require network-operated modifications to be published. YLTA logos, brand artwork, and promotional imagery are **not** covered by the MIT source-code license. Self-hosted Barlow and JetBrains Mono fonts remain subject to their SIL Open Font License 1.1 notices in `assets/fonts/licenses/`; other third-party dependencies retain their own licenses. See [assets/README.md](assets/README.md) for asset licensing.

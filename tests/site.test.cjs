@@ -59,3 +59,20 @@ test('existing browser storage keys remain stable across cosmetic releases', () 
     assert(js.includes(key), 'Storage migration needed before changing: ' + key);
   }
 });
+
+
+test('self-hosted WOFF2 fonts have local CSS, assets and OFL notices', () => {
+  const css = file('assets/fonts/fonts.css');
+  assert.match(html, /href="assets\/fonts\/fonts\.css"/);
+  assert.doesNotMatch(html, /fonts\.googleapis\.com|fonts\.gstatic\.com/);
+  assert.doesNotMatch(file('_headers'), /fonts\.googleapis\.com|fonts\.gstatic\.com/);
+  for (const font of ['barlow-regular', 'barlow-medium', 'barlow-semibold', 'barlow-condensed-medium', 'barlow-condensed-semibold', 'barlow-condensed-bold', 'jetbrains-mono-variable']) {
+    assert(css.includes(font + '.woff2'), 'CSS missing font: ' + font);
+    const path = 'assets/fonts/' + font + '.woff2';
+    assert(existsSync(join(root, path)), 'Missing self-hosted font: ' + path);
+    assert(statSync(join(root, path)).size > 2000, 'Font is truncated: ' + font);
+  }
+  for (const path of ['assets/fonts/licenses/barlow-OFL.txt', 'assets/fonts/licenses/jetbrainsmono-OFL.txt']) {
+    assert.match(file(path), /SIL OPEN FONT LICENSE/);
+  }
+});
